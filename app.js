@@ -247,14 +247,33 @@
     state.tileLayer = layer;
   }
 
-  function initMap() {
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const s = document.createElement("script");
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = resolve;
+      document.head.appendChild(s);
+    });
+  }
+
+  function loadCss(href) {
+    if (document.querySelector('link[href="' + href + '"]')) return;
+    const l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = href;
+    document.head.appendChild(l);
+  }
+
+  function mapDead() {
     const el = $("#map");
-    if (typeof L === "undefined") {
-      el.classList.add("is-dead");
-      el.innerHTML = "🗺️ The map library didn't load.<br>Every listing is still available below.";
-      $("#mapNote").textContent = "Map unavailable — listings still work.";
-      return;
-    }
+    el.classList.add("is-dead");
+    el.innerHTML = "🗺️ The map library couldn't load on this network.<br>Every listing is still available below.";
+    $("#mapNote").textContent = "Map unavailable — listings still work.";
+  }
+
+  function realInitMap() {
+    const el = $("#map");
     state.map = L.map(el, { scrollWheelZoom: false }).setView([14.6, 76.0], 7);
     addTiles(0);
     state.layer = L.layerGroup().addTo(state.map);
@@ -264,6 +283,21 @@
     window.addEventListener("load", resync);
     window.addEventListener("resize", resync);
     setTimeout(resync, 300);
+
+    syncMap(filtered()); // draw the pins now that the map exists
+  }
+
+  function initMap() {
+    if (typeof L !== "undefined") return realInitMap();
+    // The bundled Leaflet didn't load (e.g. blocked path). Try a CDN, then report.
+    loadCss("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+    loadScript("https://unpkg.com/leaflet@1.9.4/dist/leaflet.js").then(() => {
+      if (typeof L !== "undefined") return realInitMap();
+      loadScript("https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js").then(() => {
+        if (typeof L !== "undefined") realInitMap();
+        else mapDead();
+      });
+    });
   }
 
   function pinIcon(type) {

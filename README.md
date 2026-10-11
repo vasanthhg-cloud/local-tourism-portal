@@ -42,11 +42,17 @@ those places.
 The map uses **Leaflet + OpenStreetMap tiles** — free and key-less. Tapping a
 pin opens that listing's booking/enquiry panel directly.
 
-Leaflet itself is **bundled in `vendor/leaflet/`** (not loaded from a CDN), so
-the map works even on networks that block CDNs. Tiles are fetched from a
-**chain of free providers** (OpenStreetMap → CARTO → OSM Germany); if one is
-blocked, the app automatically tries the next, and if all fail it says so in
-the note under the map instead of showing a silent grey box.
+Leaflet itself is **bundled in `assets/leaflet/`** (not loaded from a CDN), so
+the map works even on networks that block CDNs, with a CDN fallback if the
+local copy is ever unreachable. Tiles are fetched from a **chain of free
+providers** (OpenStreetMap → CARTO → OSM Germany); if one is blocked, the app
+automatically tries the next, and if all fail it says so in the note under the
+map instead of showing a silent grey box.
+
+> The repo includes a **`.nojekyll`** file at its root. This is important:
+> GitHub Pages builds sites with Jekyll by default, and Jekyll silently drops
+> certain folders (including `vendor/`) from the published site. `.nojekyll`
+> tells Pages to serve the files exactly as they are in the repo. Keep it.
 
 > Geolocation only works over **HTTPS** (or `localhost`). GitHub Pages serves
 > HTTPS, so it works on the live site; opening `index.html` via `file://` will
@@ -62,7 +68,8 @@ local-tourism-portal/
 ├── styles.css          # Warm, earthy travel theme (terracotta + forest green)
 ├── app.js              # Filters, nearby/distance, map, booking flow
 ├── data.js             # Sample listings (with lat/lng), regions, testimonials
-├── vendor/leaflet/     # Leaflet bundled locally (no CDN dependency)
+├── assets/leaflet/     # Leaflet bundled locally (no CDN dependency)
+├── .nojekyll           # Tell GitHub Pages to skip Jekyll (keeps assets/ served)
 ├── README.md
 └── server/             # Optional Node/Express backend
     ├── server.js       # API + serves the static site
