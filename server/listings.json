@@ -1,0 +1,444 @@
+[
+  {
+    "id": "hs-001",
+    "type": "homestay",
+    "name": "Misty Hills Coffee Estate Stay",
+    "host": "The Ponnappa Family",
+    "location": "Madikeri",
+    "region": "Coorg",
+    "price": 3200,
+    "unit": "night",
+    "rating": 4.8,
+    "reviews": 126,
+    "capacity": 4,
+    "image": "https://picsum.photos/seed/coorgestate/800/600",
+    "tags": [
+      "Coffee estate",
+      "Breakfast included",
+      "Mountain view"
+    ],
+    "blurb": "Wake up to birdsong on a working coffee and pepper estate, with home-cooked Kodava breakfasts and guided plantation walks.",
+    "highlights": [
+      "Free plantation walk",
+      "Home-cooked meals",
+      "Bonfire evenings",
+      "Parking & Wi-Fi"
+    ]
+  },
+  {
+    "id": "hs-002",
+    "type": "homestay",
+    "name": "Riverside Bamboo Cottage",
+    "host": "Girish & Family",
+    "location": "Kushalnagar",
+    "region": "Coorg",
+    "price": 2800,
+    "unit": "night",
+    "rating": 4.6,
+    "reviews": 88,
+    "capacity": 3,
+    "image": "https://picsum.photos/seed/rivercottage/800/600",
+    "tags": [
+      "Riverside",
+      "Family friendly",
+      "Bonfire"
+    ],
+    "blurb": "A quiet bamboo cottage by the Kaveri, ideal for families who want slow mornings, river dips and starry nights.",
+    "highlights": [
+      "River access",
+      "Fishing on request",
+      "Campfire",
+      "Pet friendly"
+    ]
+  },
+  {
+    "id": "hs-003",
+    "type": "homestay",
+    "name": "Hampi Boulders Retreat",
+    "host": "Shivamma",
+    "location": "Hampi",
+    "region": "Hampi",
+    "price": 2500,
+    "unit": "night",
+    "rating": 4.7,
+    "reviews": 142,
+    "capacity": 2,
+    "image": "https://picsum.photos/seed/hampiboulder/800/600",
+    "tags": [
+      "Heritage view",
+      "Rooftop",
+      "Bicycle hire"
+    ],
+    "blurb": "Stay amid the boulder fields with the Virupaksha temple on the horizon — sunrise from the rooftop is unforgettable.",
+    "highlights": [
+      "Temple views",
+      "Rooftop café",
+      "Bicycles included",
+      "Guided walks"
+    ]
+  },
+  {
+    "id": "hs-004",
+    "type": "homestay",
+    "name": "Areca Grove Farmhouse",
+    "host": "Kavitha Hegde",
+    "location": "Mudigere",
+    "region": "Chikmagalur",
+    "price": 3500,
+    "unit": "night",
+    "rating": 4.9,
+    "reviews": 74,
+    "capacity": 6,
+    "image": "https://picsum.photos/seed/arecagrove/800/600",
+    "tags": [
+      "Farm stay",
+      "Mountain view",
+      "Trek base"
+    ],
+    "blurb": "A restored farmhouse inside an areca and cardamom grove, a perfect base for the Mullayanagiri and Kemmangundi trails.",
+    "highlights": [
+      "Home-cooked Malnad food",
+      "Trek pickups",
+      "Estate tour",
+      "Large groups welcome"
+    ]
+  },
+  {
+    "id": "hs-005",
+    "type": "homestay",
+    "name": "Mysuru Heritage Home",
+    "host": "Rangachari Family",
+    "location": "Mysuru",
+    "region": "Mysuru",
+    "price": 4200,
+    "unit": "night",
+    "rating": 4.8,
+    "reviews": 203,
+    "capacity": 4,
+    "image": "https://picsum.photos/seed/mysuruheritage/800/600",
+    "tags": [
+      "Heritage",
+      "Central",
+      "Courtyard"
+    ],
+    "blurb": "A 90-year-old home near the palace with a shaded courtyard, antique furniture and a famous Mysore-filter breakfast.",
+    "highlights": [
+      "Walk to palace",
+      "Heritage interiors",
+      "Filter coffee",
+      "Airport pickups"
+    ]
+  },
+  {
+    "id": "hs-006",
+    "type": "homestay",
+    "name": "Gokarna Beach Shack Stay",
+    "host": "Ravi Naik",
+    "location": "Kudle Beach",
+    "region": "Gokarna",
+    "price": 1900,
+    "unit": "night",
+    "rating": 4.4,
+    "reviews": 96,
+    "capacity": 2,
+    "image": "https://picsum.photos/seed/gokarnabeach/800/600",
+    "tags": [
+      "Beachfront",
+      "Sunset view",
+      "Budget"
+    ],
+    "blurb": "Fall asleep to the waves. A simple, clean shack steps from Kudle beach, run by a local family for three generations.",
+    "highlights": [
+      "Beach access",
+      "Fresh seafood",
+      "Sunset deck",
+      "Surf lessons"
+    ]
+  },
+  {
+    "id": "gd-001",
+    "type": "guide",
+    "name": "Hampi Heritage Walk with Ravi",
+    "host": "Ravi Kumar",
+    "location": "Hampi",
+    "region": "Hampi",
+    "price": 1500,
+    "unit": "half-day",
+    "rating": 4.9,
+    "reviews": 311,
+    "capacity": 10,
+    "image": "https://picsum.photos/seed/hampiguide/800/600",
+    "tags": [
+      "History",
+      "Photography spots",
+      "Small group"
+    ],
+    "blurb": "A licensed local guide who grew up among the ruins. Half a day through the Vittala and Virupaksha complexes with stories you won't find in books.",
+    "highlights": [
+      "Licensed guide",
+      "English & Kannada",
+      "Best photo stops",
+      "Skip-the-queue tips"
+    ]
+  },
+  {
+    "id": "gd-002",
+    "type": "guide",
+    "name": "Coorg Coffee & Nature Trail with Lakshmi",
+    "host": "Lakshmi Devaiah",
+    "location": "Madikeri",
+    "region": "Coorg",
+    "price": 1200,
+    "unit": "half-day",
+    "rating": 4.8,
+    "reviews": 154,
+    "capacity": 8,
+    "image": "https://picsum.photos/seed/coorgguide/800/600",
+    "tags": [
+      "Nature",
+      "Coffee",
+      "Birdwatching"
+    ],
+    "blurb": "Walk the estate trails with a naturalist who knows every bird call and bean. Ends with a fresh filter coffee at the farm.",
+    "highlights": [
+      "Birding",
+      "Coffee tasting",
+      "Plantation lore",
+      "Family friendly"
+    ]
+  },
+  {
+    "id": "gd-003",
+    "type": "guide",
+    "name": "Western Ghats Trek Guide — Suresh",
+    "host": "Suresh Gowda",
+    "location": "Chikmagalur",
+    "region": "Chikmagalur",
+    "price": 2000,
+    "unit": "day",
+    "rating": 4.7,
+    "reviews": 97,
+    "capacity": 12,
+    "image": "https://picsum.photos/seed/ghattrek/800/600",
+    "tags": [
+      "Trekking",
+      "Sunrise",
+      "Certified"
+    ],
+    "blurb": "A certified trek leader for Mullayanagiri, Kemmangundi and Kudremukh routes, with safety gear and local forest knowledge.",
+    "highlights": [
+      "Certified leader",
+      "Safety gear",
+      "Permits help",
+      "Breakfast packed"
+    ]
+  },
+  {
+    "id": "gd-004",
+    "type": "guide",
+    "name": "Mysuru Palace & Culture Walk with Anjali",
+    "host": "Anjali Rao",
+    "location": "Mysuru",
+    "region": "Mysuru",
+    "price": 1000,
+    "unit": "half-day",
+    "rating": 4.8,
+    "reviews": 188,
+    "capacity": 10,
+    "image": "https://picsum.photos/seed/mysuruguide/800/600",
+    "tags": [
+      "Culture",
+      "Palace",
+      "Markets"
+    ],
+    "blurb": "From the palace to Devaraja Market — a half-day walk through Mysuru's royal history, silk and sandalwood.",
+    "highlights": [
+      "Palace entry tips",
+      "Market tour",
+      "Silk & sandalwood",
+      "Street food"
+    ]
+  },
+  {
+    "id": "ex-001",
+    "type": "experience",
+    "name": "Coorg Coffee Plantation Tour & Tasting",
+    "host": "Ponnappa Estate",
+    "location": "Madikeri",
+    "region": "Coorg",
+    "price": 800,
+    "unit": "person",
+    "rating": 4.9,
+    "reviews": 220,
+    "capacity": 20,
+    "image": "https://picsum.photos/seed/coffeetour/800/600",
+    "tags": [
+      "Coffee",
+      "Tasting",
+      "Guided"
+    ],
+    "blurb": "See how bean becomes brew — a 2-hour estate walk, processing demo and a guided tasting of single-origin Coorg coffee.",
+    "highlights": [
+      "Bean-to-cup tour",
+      "Tasting flight",
+      "Take-home pack",
+      "Vegetarian snacks"
+    ]
+  },
+  {
+    "id": "ex-002",
+    "type": "experience",
+    "name": "Yakshagana Performance Night",
+    "host": "Udupi Kala Sangha",
+    "location": "Udupi",
+    "region": "Udupi",
+    "price": 500,
+    "unit": "person",
+    "rating": 4.7,
+    "reviews": 143,
+    "capacity": 60,
+    "image": "https://picsum.photos/seed/yakshagana/800/600",
+    "tags": [
+      "Performance",
+      "Folk art",
+      "Evening"
+    ],
+    "blurb": "An evening of Yakshagana — Karnataka's dazzling dance-drama — with an intro to the costumes and a backstage meet-and-greet.",
+    "highlights": [
+      "Live troupe",
+      "Costume demo",
+      "Backstage visit",
+      "Family friendly"
+    ]
+  },
+  {
+    "id": "ex-003",
+    "type": "experience",
+    "name": "Kodava Cooking Class",
+    "host": "Nanda Muthamma",
+    "location": "Madikeri",
+    "region": "Coorg",
+    "price": 1500,
+    "unit": "person",
+    "rating": 4.8,
+    "reviews": 81,
+    "capacity": 8,
+    "image": "https://picsum.photos/seed/kodavafood/800/600",
+    "tags": [
+      "Cooking",
+      "Food",
+      "Hands-on"
+    ],
+    "blurb": "Cook and eat a Kodava feast — pandi curry, kadambuttu and bamboo shoot — in a home kitchen with a local matriarch.",
+    "highlights": [
+      "Hands-on cooking",
+      "Full meal",
+      "Recipe booklet",
+      "Market visit"
+    ]
+  },
+  {
+    "id": "ex-004",
+    "type": "experience",
+    "name": "Sandstone Sculpture Workshop",
+    "host": "Basavaraj Arts",
+    "location": "Hampi",
+    "region": "Hampi",
+    "price": 1200,
+    "unit": "person",
+    "rating": 4.6,
+    "reviews": 64,
+    "capacity": 6,
+    "image": "https://picsum.photos/seed/hampisculpt/800/600",
+    "tags": [
+      "Craft",
+      "Workshop",
+      "Take-home"
+    ],
+    "blurb": "Carve a small sandstone piece under artisans whose families have worked the Hampi ruins for generations. Take your work home.",
+    "highlights": [
+      "All materials",
+      "Master artisan",
+      "Take-home piece",
+      "Beginner friendly"
+    ]
+  },
+  {
+    "id": "sh-001",
+    "type": "shop",
+    "name": "Coorg Spice & Honey Collective",
+    "host": "Kodagu Growers",
+    "location": "Madikeri",
+    "region": "Coorg",
+    "price": 0,
+    "unit": "item",
+    "rating": 4.7,
+    "reviews": 58,
+    "capacity": 0,
+    "image": "https://picsum.photos/seed/coorgspice/800/600",
+    "tags": [
+      "Spices",
+      "Honey",
+      "Direct from farmers"
+    ],
+    "blurb": "Cardamom, pepper, cinnamon and wild forest honey sourced directly from smallholder farms — no middlemen.",
+    "highlights": [
+      "Farmer direct",
+      "Ships across India",
+      "Gift boxes",
+      "Bulk orders"
+    ]
+  },
+  {
+    "id": "sh-002",
+    "type": "shop",
+    "name": "Channapatna Toy Workshop",
+    "host": "Gowri Enterprises",
+    "location": "Channapatna",
+    "region": "Mysuru",
+    "price": 0,
+    "unit": "item",
+    "rating": 4.9,
+    "reviews": 132,
+    "capacity": 0,
+    "image": "https://picsum.photos/seed/channapatna/800/600",
+    "tags": [
+      "Toys",
+      "Handmade",
+      "Eco-friendly"
+    ],
+    "blurb": "Traditional lacquered wooden toys made with natural dyes — safe for kids, made by artisans keeping a GI-tagged craft alive.",
+    "highlights": [
+      "Natural dyes",
+      "GI-tagged craft",
+      "Custom sets",
+      "Workshop visits"
+    ]
+  },
+  {
+    "id": "sh-003",
+    "type": "shop",
+    "name": "Mysuru Silk Weavers Co-op",
+    "host": "Mysore Silk Handloom",
+    "location": "Mysuru",
+    "region": "Mysuru",
+    "price": 0,
+    "unit": "item",
+    "rating": 4.8,
+    "reviews": 76,
+    "capacity": 0,
+    "image": "https://picsum.photos/seed/mysurusilk/800/600",
+    "tags": [
+      "Silk",
+      "Handloom",
+      "Authentic"
+    ],
+    "blurb": "Genuine Mysore silk sarees woven on handlooms by a weaver co-operative — see the loom and buy direct.",
+    "highlights": [
+      "Handloom weaving",
+      "GI silk mark",
+      "Direct from weavers",
+      "Custom orders"
+    ]
+  }
+]

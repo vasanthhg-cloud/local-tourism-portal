@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Namma Trails — book local homestays, guides, cultural experiences and businesses across Karnataka. Travel that keeps money in local hands." />
+  <title>Namma Trails — Local Tourism Portal, Karnataka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#listings">Skip to listings</a>
+
+  <!-- ===== Header ===== -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="brand" href="#top">
+        <span class="brand__mark">◈</span>
+        <span class="brand__name">Namma&nbsp;Trails</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#listings" data-jump="homestay">Stays</a>
+        <a href="#listings" data-jump="guide">Guides</a>
+        <a href="#listings" data-jump="experience">Experiences</a>
+        <a href="#listings" data-jump="shop">Local Shops</a>
+      </nav>
+      <a class="btn btn--outline nav__cta" href="#host">List your business</a>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Karnataka · Community-owned tourism</p>
+      <h1 class="hero__title">Travel that stays <em>local</em>.</h1>
+      <p class="hero__sub">
+        Book homestays, licensed guides, cultural experiences and village businesses
+        directly from the people who call these places home — Coorg to Hampi.
+      </p>
+
+      <form class="searchbar" id="searchForm" autocomplete="off">
+        <label class="searchbar__field">
+          <span>Where</span>
+          <select id="regionSelect">
+            <option value="">Anywhere in Karnataka</option>
+          </select>
+        </label>
+        <label class="searchbar__field">
+          <span>Looking for</span>
+          <select id="typeSelect">
+            <option value="all">Everything</option>
+          </select>
+        </label>
+        <label class="searchbar__field searchbar__field--grow">
+          <span>Keyword</span>
+          <input type="text" id="queryInput" placeholder="coffee, trek, silk, sunset…" />
+        </label>
+        <button class="btn btn--primary searchbar__go" type="submit">Explore</button>
+      </form>
+
+      <div class="hero__chips" id="heroChips"></div>
+    </div>
+  </section>
+
+  <!-- ===== Stats ===== -->
+  <section class="stats">
+    <div class="stats__item"><strong id="statListings">0</strong><span>local hosts &amp; businesses</span></div>
+    <div class="stats__item"><strong>0%</strong><span>platform commission on bookings</span></div>
+    <div class="stats__item"><strong>6</strong><span>destinations across Karnataka</span></div>
+    <div class="stats__item"><strong>100%</strong><span>community-owned</span></div>
+  </section>
+
+  <!-- ===== Listings ===== -->
+  <main class="section" id="listings">
+    <div class="section__head">
+      <h2 class="section__title">Discover</h2>
+      <p class="section__sub" id="resultsCount">—</p>
+    </div>
+
+    <div class="filters" id="filters" role="tablist" aria-label="Filter by category"></div>
+
+    <div class="grid" id="listingGrid"></div>
+    <p class="empty" id="emptyState" hidden>No matches. Try clearing filters or a different keyword.</p>
+  </main>
+
+  <!-- ===== How it works ===== -->
+  <section class="how">
+    <div class="section__head section__head--center">
+      <h2 class="section__title">How it works</h2>
+      <p class="section__sub">Three steps, no middlemen.</p>
+    </div>
+    <div class="how__grid">
+      <div class="how__card">
+        <span class="how__num">1</span>
+        <h3>Find a local host</h3>
+        <p>Browse stays, guides, experiences and shops run by families and artisans across Karnataka.</p>
+      </div>
+      <div class="how__card">
+        <span class="how__num">2</span>
+        <h3>Book in a minute</h3>
+        <p>Pick your dates and group size, see the total up front, and confirm — no hidden fees.</p>
+      </div>
+      <div class="how__card">
+        <span class="how__num">3</span>
+        <h3>Meet the people</h3>
+        <p>Your money goes straight to the host, guide or shop. You get a trip with a real story behind it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section class="quotes">
+    <div class="section__head section__head--center">
+      <h2 class="section__title">Travellers &amp; hosts</h2>
+    </div>
+    <div class="quotes__grid" id="quotesGrid"></div>
+  </section>
+
+  <!-- ===== Host CTA ===== -->
+  <section class="cta" id="host">
+    <div class="cta__inner">
+      <h2>Run a homestay, guide service or craft business?</h2>
+      <p>List it on Namma Trails and reach travellers who want to spend locally. You keep what you earn.</p>
+      <a class="btn btn--primary" href="#top" id="hostCta">Get listed</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="brand brand--footer">
+          <span class="brand__mark">◈</span>
+          <span class="brand__name">Namma&nbsp;Trails</span>
+        </div>
+        <p class="footer__note">A demo local-tourism portal for Karnataka. Sample listings are fictional.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#listings">Discover</a>
+        <a href="#host">List your business</a>
+        <a href="#top">Back to top</a>
+      </nav>
+    </div>
+    <p class="footer__legal">© <span id="year"></span> Namma Trails · Built as a demonstration project.</p>
+  </footer>
+
+  <!-- ===== Modal ===== -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Listing details">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="modal__body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
