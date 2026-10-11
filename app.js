@@ -216,17 +216,54 @@
 
   /* ---------------- map ---------------- */
 
-  function initMap() {
-    if (typeof L === "undefined") {
-      $("#mapNote").textContent = "Map could not load (offline). Listings still work below.";
+  // Several free, key-less tile providers. If one is blocked on the visitor's
+  // network we fall through to the next before giving up.
+  const TILE_PROVIDERS = [
+    { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", sub: "abc", attr: "&copy; OpenStreetMap contributors" },
+    { url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", sub: "abcd", attr: "&copy; OpenStreetMap contributors &copy; CARTO" },
+    { url: "https://tile.openstreetmap.de/{z}/{x}/{y}.png", sub: "", attr: "&copy; OpenStreetMap contributors" },
+  ];
+
+  function addTiles(i) {
+    if (!state.map) return;
+    if (i >= TILE_PROVIDERS.length) {
+      $("#mapNote").textContent = "Map background couldn't load on this network — the pins still show where each place is, and every listing is below.";
       return;
     }
-    state.map = L.map("map", { scrollWheelZoom: false }).setView([14.6, 76.0], 7);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution: "&copy; OpenStreetMap contributors",
-    }).addTo(state.map);
+    const p = TILE_PROVIDERS[i];
+    const layer = L.tileLayer(p.url, { maxZoom: 18, attribution: p.attr, subdomains: p.sub || "abc" });
+    let loaded = 0, errors = 0, moved = false;
+    layer.on("tileload", () => { loaded++; });
+    layer.on("tileerror", () => {
+      errors++;
+      // If nothing has loaded and tiles keep failing, try the next provider.
+      if (!moved && loaded === 0 && errors >= 2) {
+        moved = true;
+        if (state.map) state.map.removeLayer(layer);
+        addTiles(i + 1);
+      }
+    });
+    layer.addTo(state.map);
+    state.tileLayer = layer;
+  }
+
+  function initMap() {
+    const el = $("#map");
+    if (typeof L === "undefined") {
+      el.classList.add("is-dead");
+      el.innerHTML = "🗺️ The map library didn't load.<br>Every listing is still available below.";
+      $("#mapNote").textContent = "Map unavailable — listings still work.";
+      return;
+    }
+    state.map = L.map(el, { scrollWheelZoom: false }).setView([14.6, 76.0], 7);
+    addTiles(0);
     state.layer = L.layerGroup().addTo(state.map);
+
+    // Leaflet measures the container once; re-measure after layout and on resize.
+    const resync = () => state.map && state.map.invalidateSize();
+    window.addEventListener("load", resync);
+    window.addEventListener("resize", resync);
+    setTimeout(resync, 300);
   }
 
   function pinIcon(type) {
