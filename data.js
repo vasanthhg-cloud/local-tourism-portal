@@ -19,6 +19,8 @@ window.SITE_DATA = {
   listings: [
     {
       id: "hs-001",
+      lat: 12.4244,
+      lng: 75.7382,
       type: "homestay",
       name: "Misty Hills Coffee Estate Stay",
       host: "The Ponnappa Family",
@@ -36,6 +38,8 @@ window.SITE_DATA = {
     },
     {
       id: "hs-002",
+      lat: 12.4578,
+      lng: 75.9600,
       type: "homestay",
       name: "Riverside Bamboo Cottage",
       host: "Girish & Family",
@@ -53,6 +57,8 @@ window.SITE_DATA = {
     },
     {
       id: "hs-003",
+      lat: 15.3350,
+      lng: 76.4600,
       type: "homestay",
       name: "Hampi Boulders Retreat",
       host: "Shivamma",
@@ -70,6 +76,8 @@ window.SITE_DATA = {
     },
     {
       id: "hs-004",
+      lat: 13.1360,
+      lng: 75.6390,
       type: "homestay",
       name: "Areca Grove Farmhouse",
       host: "Kavitha Hegde",
@@ -87,6 +95,8 @@ window.SITE_DATA = {
     },
     {
       id: "hs-005",
+      lat: 12.2958,
+      lng: 76.6394,
       type: "homestay",
       name: "Mysuru Heritage Home",
       host: "Rangachari Family",
@@ -104,6 +114,8 @@ window.SITE_DATA = {
     },
     {
       id: "hs-006",
+      lat: 14.5390,
+      lng: 74.3160,
       type: "homestay",
       name: "Gokarna Beach Shack Stay",
       host: "Ravi Naik",
@@ -121,6 +133,8 @@ window.SITE_DATA = {
     },
     {
       id: "gd-001",
+      lat: 15.3350,
+      lng: 76.4600,
       type: "guide",
       name: "Hampi Heritage Walk with Ravi",
       host: "Ravi Kumar",
@@ -138,6 +152,8 @@ window.SITE_DATA = {
     },
     {
       id: "gd-002",
+      lat: 12.4244,
+      lng: 75.7382,
       type: "guide",
       name: "Coorg Coffee & Nature Trail with Lakshmi",
       host: "Lakshmi Devaiah",
@@ -155,6 +171,8 @@ window.SITE_DATA = {
     },
     {
       id: "gd-003",
+      lat: 13.3161,
+      lng: 75.7720,
       type: "guide",
       name: "Western Ghats Trek Guide — Suresh",
       host: "Suresh Gowda",
@@ -172,6 +190,8 @@ window.SITE_DATA = {
     },
     {
       id: "gd-004",
+      lat: 12.2958,
+      lng: 76.6394,
       type: "guide",
       name: "Mysuru Palace & Culture Walk with Anjali",
       host: "Anjali Rao",
@@ -189,6 +209,8 @@ window.SITE_DATA = {
     },
     {
       id: "ex-001",
+      lat: 12.4244,
+      lng: 75.7382,
       type: "experience",
       name: "Coorg Coffee Plantation Tour & Tasting",
       host: "Ponnappa Estate",
@@ -206,6 +228,8 @@ window.SITE_DATA = {
     },
     {
       id: "ex-002",
+      lat: 13.3409,
+      lng: 74.7421,
       type: "experience",
       name: "Yakshagana Performance Night",
       host: "Udupi Kala Sangha",
@@ -223,6 +247,8 @@ window.SITE_DATA = {
     },
     {
       id: "ex-003",
+      lat: 12.4244,
+      lng: 75.7382,
       type: "experience",
       name: "Kodava Cooking Class",
       host: "Nanda Muthamma",
@@ -240,6 +266,8 @@ window.SITE_DATA = {
     },
     {
       id: "ex-004",
+      lat: 15.3350,
+      lng: 76.4600,
       type: "experience",
       name: "Sandstone Sculpture Workshop",
       host: "Basavaraj Arts",
@@ -257,6 +285,8 @@ window.SITE_DATA = {
     },
     {
       id: "sh-001",
+      lat: 12.4244,
+      lng: 75.7382,
       type: "shop",
       name: "Coorg Spice & Honey Collective",
       host: "Kodagu Growers",
@@ -274,6 +304,8 @@ window.SITE_DATA = {
     },
     {
       id: "sh-002",
+      lat: 12.6514,
+      lng: 77.2065,
       type: "shop",
       name: "Channapatna Toy Workshop",
       host: "Gowri Enterprises",
@@ -291,6 +323,8 @@ window.SITE_DATA = {
     },
     {
       id: "sh-003",
+      lat: 12.2958,
+      lng: 76.6394,
       type: "shop",
       name: "Mysuru Silk Weavers Co-op",
       host: "Mysore Silk Handloom",

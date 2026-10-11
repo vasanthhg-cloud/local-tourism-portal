@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Namma Trails — book local homestays, guides, cultural experiences and businesses across Karnataka. Travel that keeps money in local hands." />
+  <meta name="description" content="Namma Trails — find and book homestays, guides, cultural experiences and businesses near you across Karnataka, on an interactive map." />
   <title>Namma Trails — Local Tourism Portal, Karnataka</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Leaflet (open-source maps, no API key) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -37,8 +39,8 @@
       <p class="hero__eyebrow">Karnataka · Community-owned tourism</p>
       <h1 class="hero__title">Travel that stays <em>local</em>.</h1>
       <p class="hero__sub">
-        Book homestays, licensed guides, cultural experiences and village businesses
-        directly from the people who call these places home — Coorg to Hampi.
+        Find homestays, licensed guides, cultural experiences and village businesses
+        <strong>near you</strong> — see them on the map, book them directly.
       </p>
 
       <form class="searchbar" id="searchForm" autocomplete="off">
@@ -49,7 +51,7 @@
           </select>
         </label>
         <label class="searchbar__field">
-          <span>Looking for</span>
+          <span>Your interest</span>
           <select id="typeSelect">
             <option value="all">Everything</option>
           </select>
@@ -60,6 +62,13 @@
         </label>
         <button class="btn btn--primary searchbar__go" type="submit">Explore</button>
       </form>
+
+      <div class="hero__actions">
+        <button class="btn btn--locate" id="heroNearBtn" type="button">
+          <span aria-hidden="true">◎</span> Show places near me
+        </button>
+        <span class="hero__hint" id="heroHint">We'll use your location to sort by distance and centre the map.</span>
+      </div>
 
       <div class="hero__chips" id="heroChips"></div>
     </div>
@@ -73,17 +82,34 @@
     <div class="stats__item"><strong>100%</strong><span>community-owned</span></div>
   </section>
 
-  <!-- ===== Listings ===== -->
+  <!-- ===== Discover + map ===== -->
   <main class="section" id="listings">
     <div class="section__head">
-      <h2 class="section__title">Discover</h2>
+      <h2 class="section__title">Discover near you</h2>
       <p class="section__sub" id="resultsCount">—</p>
     </div>
 
-    <div class="filters" id="filters" role="tablist" aria-label="Filter by category"></div>
+    <p class="filter__label">Filter by your interest</p>
+    <div class="filters" id="filters" role="tablist" aria-label="Filter by interest"></div>
+
+    <div class="controls">
+      <button class="btn btn--primary" id="nearMeBtn" type="button">
+        <span aria-hidden="true">◎</span> Use my location
+      </button>
+      <div class="sort" id="sortGroup" role="group" aria-label="Sort">
+        <button class="sort__btn is-active" data-sort="recommended" type="button">Recommended</button>
+        <button class="sort__btn" data-sort="nearest" type="button" disabled>Nearest first</button>
+      </div>
+      <span class="loc-status" id="locStatus">Location off — showing all of Karnataka</span>
+    </div>
+
+    <div class="map-card card">
+      <div id="map" class="map" role="application" aria-label="Map of listings"></div>
+      <p class="map-card__note" id="mapNote">Pins show the places matching your current filters. Tap a pin to open it.</p>
+    </div>
 
     <div class="grid" id="listingGrid"></div>
-    <p class="empty" id="emptyState" hidden>No matches. Try clearing filters or a different keyword.</p>
+    <p class="empty" id="emptyState" hidden>No matches. Try clearing filters, widening your search, or a different keyword.</p>
   </main>
 
   <!-- ===== How it works ===== -->
@@ -95,8 +121,8 @@
     <div class="how__grid">
       <div class="how__card">
         <span class="how__num">1</span>
-        <h3>Find a local host</h3>
-        <p>Browse stays, guides, experiences and shops run by families and artisans across Karnataka.</p>
+        <h3>Find places near you</h3>
+        <p>Share your location and see homestays, guides, experiences and shops sorted by distance — mapped to your interests.</p>
       </div>
       <div class="how__card">
         <span class="how__num">2</span>
@@ -144,7 +170,7 @@
         <a href="#top">Back to top</a>
       </nav>
     </div>
-    <p class="footer__legal">© <span id="year"></span> Namma Trails · Built as a demonstration project.</p>
+    <p class="footer__legal">© <span id="year"></span> Namma Trails · Built as a demonstration project. Maps © OpenStreetMap contributors.</p>
   </footer>
 
   <!-- ===== Modal ===== -->
@@ -159,6 +185,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="data.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

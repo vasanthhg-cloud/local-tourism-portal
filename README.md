@@ -18,7 +18,9 @@ book directly, and there's no middleman commission.
 | Area | What it does |
 |------|--------------|
 | **Discover** | Filterable grid of homestays, guides, experiences and local shops |
-| **Search** | Filter by destination, category and keyword |
+| **Nearby** | "Use my location" sorts results by real distance (haversine) and shows how far each place is |
+| **Map** | Interactive Leaflet/OpenStreetMap view — pins follow your current interest filter, tap a pin to book |
+| **Search** | Filter by destination, interest/category and keyword |
 | **Listing detail** | Photo, highlights, host, capacity and pricing |
 | **Booking flow** | Dates, group size, live total, confirmation with a reference code |
 | **Enquiries** | Local shops take enquiry messages instead of bookings |
@@ -27,6 +29,22 @@ book directly, and there's no middleman commission.
 The front-end works **standalone** (GitHub Pages) using `data.js` and saving
 bookings in the browser, and **upgrades automatically** to the API when the
 Node server is running.
+
+### Nearby places + map
+
+Every listing carries `lat`/`lng`. When a visitor taps **Use my location**, the
+app asks the browser for their coordinates, computes the distance to each
+listing, re-sorts results **nearest first**, and drops a blue "you are here" pin
+on the map. The map's pins always mirror the active **interest filter** and
+search, so switching from *Everything* to *Homestays* redraws the map to just
+those places.
+
+The map uses **Leaflet + OpenStreetMap tiles** — free and key-less. Tapping a
+pin opens that listing's booking/enquiry panel directly.
+
+> Geolocation only works over **HTTPS** (or `localhost`). GitHub Pages serves
+> HTTPS, so it works on the live site; opening `index.html` via `file://` will
+> not prompt for location.
 
 ---
 
