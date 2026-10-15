@@ -272,6 +272,9 @@ section{padding:88px 0;position:relative}
 /* destination photo slider */
 .card-img .slides{position:absolute;inset:0}
 .card-img .slides{touch-action:pan-y;cursor:grab}
+.slides img,.card-img img,.hs-img img,.pm-hero img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+.slides{-webkit-touch-callout:none}
+.slides{will-change:transform}
 .card-img .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   opacity:0;transition:opacity .75s ease,transform 6s ease;transform:scale(1)}
 .card-img .slides img.on{opacity:1}
@@ -2587,41 +2590,77 @@ html[lang="kn"] .eyebrow,html[lang="hi"] .eyebrow{letter-spacing:.12em}
       $("#b-name").focus({preventScroll:true});
   }
 
-  /* ---- swipe a slider with a finger or the mouse ---- */
+  /* ---- swipe a slider: touch first (reliable on phones), mouse for desktop ---- */
   function attachSwipe(host, step){
     if(!host || host.__swipe) return; host.__swipe=true;
-    var x0=null,y0=null,dx=0,active=false;
-    host.addEventListener("pointerdown",function(e){
-      if(e.pointerType==="mouse" && e.button!==0) return;
-      x0=e.clientX; y0=e.clientY; dx=0; active=true;
-    });
-    host.addEventListener("pointermove",function(e){
-      if(!active||x0===null) return;
-      dx=e.clientX-x0;
-      var dy=e.clientY-y0;
-      if(Math.abs(dx) > Math.abs(dy)+4){
-        if(e.cancelable) e.preventDefault();
-        host.style.transition="none";
-        host.style.transform="translateX("+Math.max(-64,Math.min(64,dx*0.45))+"px)";
+    var x0=0,y0=0,dx=0,active=false,horiz=false,touchAt=0;
+
+    function start(x,y){
+      x0=x; y0=y; dx=0; active=true; horiz=false;
+      host.style.transition="none";
+    }
+    function move(x,y,ev){
+      if(!active) return;
+      dx=x-x0;
+      var dy=y-y0;
+      var adx=Math.abs(dx), ady=Math.abs(dy);
+      if(horiz){
+        if(ev && ev.cancelable) ev.preventDefault();   // stop the page panning under the finger
+        host.style.transform="translateX("+Math.max(-70,Math.min(70,dx*0.5))+"px)";
+        return;
       }
-    });
+      /* Only give up on a swipe when the gesture is CLEARLY vertical. A finger
+         wobbles, so a single early sample must never decide this. */
+      if(ady>18 && ady>adx*1.5){ active=false; host.style.transform=""; host.style.transition=""; return; }
+      /* commit to horizontal once the sideways travel is unambiguous */
+      if(adx>12 && adx>=ady){
+        horiz=true;
+        if(ev && ev.cancelable) ev.preventDefault();
+        host.style.transform="translateX("+Math.max(-70,Math.min(70,dx*0.5))+"px)";
+      }
+    }
     function end(){
-      if(!active) return; active=false;
+      if(!active){ host.style.transform=""; host.style.transition=""; return; }
+      active=false;
       host.style.transform=""; host.style.transition="";
-      var moved=Math.abs(dx)>38;
-      if(moved) step(dx<0?1:-1);
-      x0=null; dx=0;
-      if(moved){
-        /* a swipe must not also count as a tap on the card */
+      if(horiz && Math.abs(dx)>30){
+        step(dx<0?1:-1);
+        /* a swipe must not also register as a tap on the card */
         var kill=function(ev){ ev.stopPropagation(); ev.preventDefault(); host.removeEventListener("click",kill,true); };
         host.addEventListener("click",kill,true);
       }
+      dx=0;
     }
-    host.addEventListener("pointerup",end);
-    host.addEventListener("pointercancel",end);
+
+    /* --- touch: the path that matters on a phone --- */
+    host.addEventListener("touchstart",function(e){
+      if(e.touches.length!==1) return;
+      touchAt=Date.now();
+      start(e.touches[0].clientX,e.touches[0].clientY);
+    },{passive:true});
+    host.addEventListener("touchmove",function(e){
+      if(e.touches.length!==1) return;
+      move(e.touches[0].clientX,e.touches[0].clientY,e);
+    },{passive:false});
+    host.addEventListener("touchend",function(){ end(); },{passive:true});
+    host.addEventListener("touchcancel",function(){ active=false; host.style.transform=""; host.style.transition=""; },{passive:true});
+
+    /* --- mouse: desktop only (ignore the synthetic mouse events a touch also fires) --- */
+    host.addEventListener("mousedown",function(e){
+      if(e.button!==0) return;
+      if(Date.now()-touchAt < 900) return;
+      start(e.clientX,e.clientY);
+    });
+    host.addEventListener("mousemove",function(e){
+      if(!active) return;
+      if(Date.now()-touchAt < 900) return;
+      move(e.clientX,e.clientY,e);
+    });
+    window.addEventListener("mouseup",function(){ end(); });
   }
 
   /* ---- destination photo sliders: auto-advance, dots to jump ---- */
+  $$("[data-slider] img").forEach(function(im){ im.setAttribute("draggable","false"); });
   $$("[data-slider]").forEach(function(sl){
     var imgs=$$("img",sl), dots=sl.querySelector(".dots");
     if(imgs.length<2){ if(dots) dots.remove(); return; }
@@ -3433,6 +3472,7 @@ html[lang="kn"] .eyebrow,html[lang="hi"] .eyebrow{letter-spacing:.12em}
       var im=document.createElement("img");
       im.className="slide"+(i===0?" on":"");
       im.setAttribute("src",p.src); im.setAttribute("alt",p.alt||"");
+      im.setAttribute("draggable","false");
       if(dots) host.insertBefore(im,dots); else host.appendChild(im);
       return im;
     });
